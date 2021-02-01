@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState, Component } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useFrame, extend } from 'react-three-fiber'
-import { useTexture, shaderMaterial, Html } from 'drei'
+import { useTexture, shaderMaterial } from 'drei'
 import glsl from 'babel-plugin-glsl/macro'
 import * as THREE from 'three';
 import gsap from 'gsap';
