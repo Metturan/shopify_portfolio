@@ -17,6 +17,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-three-fiber": "^5.3.13",
+    "react-use-gesture": "^9.0.0",
     "three": "^0.124.0",
     "web-vitals": "^0.2.4"
   },

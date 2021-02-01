@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState, Component } from 'react';
 import { useFrame, extend } from 'react-three-fiber'
 import { useTexture, shaderMaterial } from 'drei'
+import { useDrag } from 'react-use-gesture'
 import glsl from 'babel-plugin-glsl/macro'
 import * as THREE from 'three';
 import gsap from 'gsap';
@@ -37,13 +38,19 @@ function changeSlider() {
 
 changeSlider();
 
-window.addEventListener('wheel', (e) => {
-  if (position >= -0.2 && scrolling) {
-    if (position <= 4.2) {
-      speed += e.deltaY * 0.0002
-    }
-  }
-})
+// const bind = useDrag({})
+
+// window.addEventListener('wheel', (e) => {
+//   if (position >= -0.2 && scrolling) {
+//     if (position <= 4.2) {
+//       speed += e.deltaY * 0.0002
+//     }
+//   }
+// })
+
+
+
+
 
 const ColorMaterial = shaderMaterial(
   {
@@ -293,6 +300,14 @@ function HandleImages(props) {
 }
 
 function CanvasData (props) {
+
+  document.querySelector('#home-container').addEventListener('dragenter', (e) => {
+    if (position >= -0.2 && scrolling) {
+      if (position <= 4.2) {
+        speed += e.deltaY * 0.0002
+      }
+    }
+  })
 
   const groupMesh = useRef();
   const [isMobile, setIsMobile] = useState('');
