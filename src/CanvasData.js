@@ -15,6 +15,7 @@ import fooi from './images/fooipanel.png'
 let speed = 0;
 let position = 0;
 let rounded = 0;
+let previousRounded = 0;
 let time = 0;
 let scrolling = true;
 let attractMode = false;
@@ -145,12 +146,6 @@ function HandleImages(props) {
     if (didMount) {
       scrolling = true;
 
-      // console.log(props.listItems.current.childNodes[0].attributes[0].value)
-      // console.log(props.listItems.current.childNodes[1])
-      // console.log(props.listItems.current.childNodes[2])
-      // console.log(props.listItems.current.childNodes[3])
-      // console.log(props.listItems)
-
       setTimeout(() => {
         for (var i=0; i<objs.length; i++) {
 
@@ -185,6 +180,14 @@ function HandleImages(props) {
     meshes.current.push(mesh);
   }
 
+  function removeInactiveInfoPanels(rounded) {
+    props.section.forEach((item, i) => {
+      if (rounded !== i) {
+        item.current.classList.remove('active');
+      }
+    })
+  }
+
   useFrame(() => {
       position += speed;
       speed *= 0.8;
@@ -203,24 +206,44 @@ function HandleImages(props) {
         meshes.current[i].material.uniforms.distanceFromCenter.value = o.dist
         meshes.current[i].material.uniforms.time.value = time;
        
-
-      //   if (o.dist < 0.9 && o.dist > 0.8) {
-      //     for (var k = 0; k < elements.length; k++) {
-      //       if (k !== i) { 
-      //         elements[k].classList.remove('active');
-      //       } 
-      //     }
-      //     elements[i].classList.add('active');
-      //   }
       })
 
       let diff = (rounded - position)
+
+      if (rounded !== previousRounded) {
+        switch(rounded) {
+          case 0:
+            props.section[rounded].current.classList.add('active');
+            removeInactiveInfoPanels(rounded);
+            break;
+          case 1:
+            props.section[rounded].current.classList.add('active');
+            removeInactiveInfoPanels(rounded);
+            break;
+          case 2:
+            props.section[rounded].current.classList.add('active');
+            removeInactiveInfoPanels(rounded);
+            break;
+          case 3:
+            props.section[rounded].current.classList.add('active');
+            removeInactiveInfoPanels(rounded);
+            break;
+          case 4:
+            props.section[rounded].current.classList.add('active');
+            removeInactiveInfoPanels(rounded);
+            break;
+        }
+      }
 
       if (attractMode) {
         position += -(position - attractTo)*0.03;
       } else {
         position += Math.sign(diff)*Math.pow(Math.abs(diff), 0.7)*0.015;
       }
+
+      previousRounded = rounded;
+
+ 
   })
 
   function panelClicked(e) {
@@ -228,6 +251,8 @@ function HandleImages(props) {
     scrolling = false;
 
     props.link.linkChange(e.object.name, e.object.index);
+
+    gsap.to(props.listItems.current, {duration: 0.3, autoAlpha: 0})
 
     document.querySelector('.section-names.active .titleId').classList.add('active');
 
@@ -289,7 +314,7 @@ function CanvasData (props) {
   })
 
   if (isMobile) {
-    gsap.to(groupMesh.current.position, {x: 0, y: 0, z: -1, duration: 0.5 })
+    gsap.to(groupMesh.current.position, {x: 0, y: 0, z: -3, duration: 0.5 })
     gsap.to(groupMesh.current.rotation, {x: 0,y: 0,z: 0, duration: 0.5})
 
   } else if (!isMobile && !props.isPanelClicked) {
@@ -301,7 +326,7 @@ function CanvasData (props) {
 
   return (
     <group ref={groupMesh} position={positionOfSlider} scale={[4.1,4.1,4.1]} rotation={rotationOfSlider}>
-      <HandleImages items={props.items} listItems={props.listItems} forwardedRef={groupMesh} link={props}/>
+      <HandleImages section={props.section} items={props.items} listItems={props.listItems} forwardedRef={groupMesh} link={props}/>
     </group>
   )
 }

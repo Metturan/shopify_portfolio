@@ -92,6 +92,12 @@ function LoaderWrapper(props) {
 
 function Home (props) {
 
+  let section0 = useRef();
+  let section1 = useRef();
+  let section2 = useRef();
+  let section3 = useRef();
+  let section4 = useRef();
+
   const history = useHistory();
 
   let listItems = useRef();
@@ -117,11 +123,15 @@ function Home (props) {
     transition={transition}
     id='home-container'>
         <Grids />
-        <ChapterSelection />
+        <ChapterSelection section={[section0, section1, section2, section3, section4]} />
         <Canvas camera={{position: [0,0,4.5]}} >
           <ambientLight intensity={0.2} />
           <Suspense fallback={null}>
-            <CanvasData listItems={listItems} linkChange={changeURL} isPanelClicked={isPanelClicked}/>
+            <CanvasData 
+              listItems={listItems} 
+              linkChange={changeURL} 
+              section={[section0, section1, section2, section3, section4]}
+              isPanelClicked={isPanelClicked}/>
           </Suspense>
         </Canvas>
           <ul ref={listItems} className='carousel-list'>

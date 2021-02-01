@@ -372,7 +372,9 @@ body {
   padding: 1.3vw 4vw;
   font-size: 2vw;
   margin-top: 4.5vw;
-  font-family: 'maisonneuebold'
+  font-family: 'maisonneuebold';
+  text-decoration: none;
+  color: #000;
 }
 
 .fontsize {
@@ -471,12 +473,18 @@ ul.carousel-list li {
   align-items: center;
 }
 
+ul.carousel-list li:hover span {
+  background-color: #000;
+}
+
 ul.carousel-list li span {
   width: 80%;
   height: 75%;
-  border-radius: 100%;
-  background: #000;
+  border-radius: 15px;
+  border: 2px solid #000;
+  background-color: transparent;
   pointer-events: none;
+  transition: background-color 0.3s linear;
 }
 
 .container {
@@ -508,6 +516,7 @@ ul.carousel-list li span {
   text-decoration: none;
   color: #000;
   padding: 0;
+  cursor: pointer;
 }
 
 .section-names p {
@@ -571,7 +580,7 @@ ul.carousel-list li span {
 }
 
 .hero h1::after, .section-names h1::after {
-  content: "Dynetics Lunar Landing";
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -580,6 +589,7 @@ ul.carousel-list li span {
   -webkit-text-fill-color: transparent;
   transition: text-stroke 0.3s linear;
   z-index: 10;
+  display: none;
 }
 
 .section-names h1.active::after {
@@ -664,6 +674,9 @@ ul.carousel-list li span {
 
 
 @media (max-width: 800px) {
+  .carousel-list {
+    display: none !important;
+  }
   .section-names p, .section-names h2 {
     display: none;
   }
@@ -674,7 +687,7 @@ ul.carousel-list li span {
   }
   .section-names {
     top: unset;
-    bottom: 10vw;
+    bottom: 12vw;
     left: 50%;
     transform: translateX(-50%) !important;
     width: 100%;
