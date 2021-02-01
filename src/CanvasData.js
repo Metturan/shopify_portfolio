@@ -48,7 +48,13 @@ changeSlider();
 //   }
 // })
 
-
+window.addEventListener('dragenter', (e) => {
+  if (position >= -0.2 && scrolling) {
+    if (position <= 4.2) {
+      speed += e.deltaX * 0.0002
+    }
+  }
+})
 
 
 
@@ -300,14 +306,6 @@ function HandleImages(props) {
 }
 
 function CanvasData (props) {
-
-  document.querySelector('#home-container').addEventListener('dragenter', (e) => {
-    if (position >= -0.2 && scrolling) {
-      if (position <= 4.2) {
-        speed += e.deltaY * 0.0002
-      }
-    }
-  })
 
   const groupMesh = useRef();
   const [isMobile, setIsMobile] = useState('');
