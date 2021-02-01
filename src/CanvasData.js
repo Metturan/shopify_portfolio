@@ -26,7 +26,7 @@ let positionOfSlider;
 
 function changeSlider() {
   if (window.matchMedia("(max-width: 800px)").matches) {
-    positionOfSlider = [0,0.5,-1];
+    positionOfSlider = [0,0.5,-3];
     rotationOfSlider = [0,0,0];
 
   } else {
