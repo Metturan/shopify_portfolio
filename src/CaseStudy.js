@@ -19,7 +19,10 @@ function CaseStudy (props){
             <h2>{props.data.title}</h2>
           </div>
           <div className="bodyContainer">
-            <p className='casedesc'>{props.data.description}</p>
+            <div>
+              <p className='casedesc'>{props.data.description}</p>
+              {props.data.url ? <a target="_blank" href={props.data.url}>View Site</a> : null}
+            </div>
             <div>
               <p className='sub'>ROLE</p>
               <p className='role' style={{lineHeight: 1}}>Front-End Developer</p>

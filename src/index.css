@@ -85,7 +85,6 @@ body {
 
 #home-container {
   height: 100vh;
-  transition: background-color 0.3s linear, color 0.3s linear 0.2s;
 }
 
 
@@ -627,7 +626,7 @@ ul.carousel-list li span {
   justify-content: space-between;
 }
 
-.bodyContainer p {
+.bodyContainer > div:first-child {
   width: 75%;
   font-size: 1.7vw;
   line-height: 1.7;
@@ -635,7 +634,7 @@ ul.carousel-list li span {
 
 }
 
-.bodyContainer div {
+.bodyContainer > div:last-child {
   width: 25%;
   font-size: 2vw;
   font-family: var(--maisonBold);
@@ -674,6 +673,9 @@ ul.carousel-list li span {
 
 
 @media (max-width: 800px) {
+  #home-container {
+    height: 75vh;
+  }
   .carousel-list {
     display: none !important;
   }
