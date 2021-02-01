@@ -674,7 +674,7 @@ ul.carousel-list li span {
 
 @media (max-width: 800px) {
   #home-container {
-    height: 75vh;
+    height: 78vh;
   }
   .carousel-list {
     display: none !important;
@@ -689,7 +689,7 @@ ul.carousel-list li span {
   }
   .section-names {
     top: unset;
-    bottom: 12vw;
+    bottom: 53vw;
     left: 50%;
     transform: translateX(-50%) !important;
     width: 100%;

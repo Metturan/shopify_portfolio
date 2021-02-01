@@ -21,7 +21,7 @@ function CaseStudy (props){
           <div className="bodyContainer">
             <div>
               <p className='casedesc'>{props.data.description}</p>
-              {props.data.url ? <a target="_blank" href={props.data.url}>View Site</a> : null}
+              {props.data.url ? <a rel="noreferrer noopener" target="_blank" href={props.data.url}>View Site</a> : null}
             </div>
             <div>
               <p className='sub'>ROLE</p>
