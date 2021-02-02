@@ -528,7 +528,7 @@ ul.carousel-list li span {
 
 .section-names h1 {
   max-width: 50vw;
-  font-family: 'Playfair Display';
+  font-family: var(--maisonBold);
   position: relative;
   font-size: 5rem;
   line-height: 1;
