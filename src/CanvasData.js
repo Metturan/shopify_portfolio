@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, Component } from 'react';
 import { useFrame, extend } from 'react-three-fiber'
 import { useTexture, shaderMaterial } from 'drei'
-import { useGesture } from 'react-use-gesture'
+import { useGesture, useDrag } from 'react-use-gesture'
 import glsl from 'babel-plugin-glsl/macro'
 import * as THREE from 'three';
 import gsap from 'gsap';
@@ -315,10 +315,13 @@ function CanvasData (props) {
   }
 
   const config = {
-    axis: 'x'
+    axis: 'x',
+    useTouch: true
   }
 
-  const bind = useGesture({ onDrag: state => dragSlider(state)},config)
+  const bind = useDrag( (state) => {
+    dragSlider(state)
+  }, config)
 
   function dragSlider(state) {
     if (mobile) {
