@@ -316,7 +316,8 @@ function CanvasData (props) {
 
   const config = {
     axis: 'x',
-    useTouch: true
+    filterTaps: true,
+    useTouch: false
   }
 
   const bind = useDrag( (state) => {
