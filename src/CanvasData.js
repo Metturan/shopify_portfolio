@@ -300,6 +300,14 @@ function CanvasData (props) {
   const [isMobile, setIsMobile] = useState(false);
   const didMount = useDidMount();
 
+  if (!props.isLoading) {
+    props.section.forEach((item) => {
+      item.current.classList.remove('active');
+    })
+    
+    props.section[rounded].current.classList.add('active');
+  }
+
   let mobile = false;
 
   if (window.matchMedia("(max-width: 800px)").matches) {

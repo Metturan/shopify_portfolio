@@ -132,6 +132,7 @@ function Home (props) {
           <Suspense fallback={null}>
             <CanvasData 
               listItems={listItems} 
+              isLoading={props.isLoading}
               linkChange={changeURL} 
               section={[section0, section1, section2, section3, section4]}
               jobPositionDom={jobPositionDom}
