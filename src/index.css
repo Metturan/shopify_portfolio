@@ -729,7 +729,7 @@ ul.carousel-list li span {
   }
   .section-names {
     top: unset;
-    bottom: 48vw;
+    bottom: 43vw;
     left: 50%;
     transform: translateX(-50%) !important;
     width: 100%;
