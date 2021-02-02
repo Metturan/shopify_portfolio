@@ -1,6 +1,7 @@
 import {motion} from 'framer-motion'
 
 import Arrow from './Arrow'
+import mail from './images/send-mail.svg' 
 
 function CaseStudy (props){
     return (
@@ -39,6 +40,11 @@ function CaseStudy (props){
         <img className='caseImg' src={props.image2} alt=""/>
         {props.image3 ? <img className='caseImg' src={props.image3} alt=""/> : null}
         {props.image4 ? <img className='caseImg' src={props.image4} alt=""/> : null}
+        <div className="cta-button-holder">
+        <a href="mailto:metturanketh@gmail.com" className='contactBtn'>
+          <span>Contact Me</span><img src={mail} alt=""/>
+        </a>
+      </div>
         <div className="spacer"></div>
       </motion.div>
     )

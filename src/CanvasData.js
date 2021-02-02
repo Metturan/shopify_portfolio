@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, Component } from 'react';
 import { useFrame, extend } from 'react-three-fiber'
 import { useTexture, shaderMaterial } from 'drei'
-import { useDrag } from 'react-use-gesture'
+import { useGesture } from 'react-use-gesture'
 import glsl from 'babel-plugin-glsl/macro'
 import * as THREE from 'three';
 import gsap from 'gsap';
@@ -38,24 +38,13 @@ function changeSlider() {
 
 changeSlider();
 
-// const bind = useDrag({})
-
-// window.addEventListener('wheel', (e) => {
-//   if (position >= -0.2 && scrolling) {
-//     if (position <= 4.2) {
-//       speed += e.deltaY * 0.0002
-//     }
-//   }
-// })
-
-window.addEventListener('dragenter', (e) => {
+window.addEventListener('wheel', (e) => {
   if (position >= -0.2 && scrolling) {
     if (position <= 4.2) {
-      speed += e.deltaX * 0.0002
+      speed += e.deltaY * 0.0002
     }
   }
 })
-
 
 
 const ColorMaterial = shaderMaterial(
@@ -271,7 +260,7 @@ function HandleImages(props) {
 
     gsap.to('.arrow-loader', {duration: 0.6, autoAlpha: 1, delay: 0.9})
     gsap.to('.section-names.active .hide', {autoAlpha: 0, duration: 0.3});
-    gsap.to('.section-names.active h1', {x: '27%', y: '37%', duration: 0.5, scaleX: 1.1, scaleY: 1.1});
+    gsap.to(props.jobPosition.current, {duration: 0.3, autoAlpha: 0});   
 
     gsap.to(props.forwardedRef.current.position, {x: 0, y: 0, z: 0, duration: 0.5})
     gsap.to(props.forwardedRef.current.rotation, {x: 0, y: 0, z: 0, duration: 0.5})
@@ -308,25 +297,60 @@ function HandleImages(props) {
 function CanvasData (props) {
 
   const groupMesh = useRef();
-  const [isMobile, setIsMobile] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+  const didMount = useDidMount();
 
-  useEffect(() => {
-    function responsive() {
-      if (window.matchMedia("(max-width: 800px)").matches) {
-        setIsMobile(true);
+  let mobile = false;
 
-      } else {
-        setIsMobile(false);
+  if (window.matchMedia("(max-width: 800px)").matches) {
+    mobile = true;
+  }
+
+  const config = {
+    axis: 'x'
+  }
+
+  const bind = useGesture({ onDrag: state => dragSlider(state)},config)
+
+  function dragSlider(state) {
+    if (mobile) {
+      if (position >= -0.2 && scrolling) {
+        if (position <= 4.2) {
+          speed += state.delta[0] * 0.0002
+        }
       }
     }
+  }
 
-    window.addEventListener('resize', debounce(responsive, 150), true)
+  function responsive() {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }
 
-    return window.removeEventListener('resize', debounce(responsive, 150));
+  useEffect(() => {
+    if (didMount) {
+      responsive();
+    }
+    window.addEventListener('resize', debounce(responsive, 100), true)
+
+    return window.removeEventListener('resize', debounce(responsive, 100));
 
   })
 
-  if (isMobile) {
+  
+  if (isMobile && props.isPanelClicked) {
+    gsap.to(groupMesh.current.position, {x: 0, y: 0, z: 0, duration: 0.5 })
+    gsap.to(groupMesh.current.rotation, {x: 0,y: 0,z: 0, duration: 0.5})
+
+   if (document.querySelector('.section-names.active .titleId').classList.contains('active')) {
+      document.querySelector('.section-names.active .titleId').classList.remove('desktop');
+      document.querySelector('.section-names.active .titleId').classList.add('mobile');
+    }
+
+  } else if (isMobile) {
     gsap.to(groupMesh.current.position, {x: 0, y: 0, z: -3, duration: 0.5 })
     gsap.to(groupMesh.current.rotation, {x: 0,y: 0,z: 0, duration: 0.5})
 
@@ -335,11 +359,16 @@ function CanvasData (props) {
       gsap.to(groupMesh.current.position, {x: 2, y: 0, z: -1, duration: 0.5 })
       gsap.to(groupMesh.current.rotation, {x: 0, y: -0.4, z: -0.1, duration: 0.5 })
     }
+  } else if (!isMobile) {
+    if (document.querySelector('.section-names.active .titleId').classList.contains('active')) {
+      document.querySelector('.section-names.active .titleId').classList.remove('mobile');
+      document.querySelector('.section-names.active .titleId').classList.add('desktop');
+    }
   }
 
   return (
-    <group ref={groupMesh} position={positionOfSlider} scale={[4.1,4.1,4.1]} rotation={rotationOfSlider}>
-      <HandleImages section={props.section} items={props.items} listItems={props.listItems} forwardedRef={groupMesh} link={props}/>
+    <group ref={groupMesh} {...bind()} position={positionOfSlider} scale={[4.1,4.1,4.1]} rotation={rotationOfSlider}>
+      <HandleImages jobPosition={props.jobPositionDom} section={props.section} items={props.items} listItems={props.listItems} forwardedRef={groupMesh} link={props}/>
     </group>
   )
 }

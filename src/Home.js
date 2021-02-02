@@ -102,6 +102,8 @@ function Home (props) {
 
   let listItems = useRef();
 
+  let jobPositionDom = useRef();
+
   let [isOpen, setOpen] = useState(false);
   let [isPanelClicked, setPanelClicked] = useState(false);
   let [routeName, setName] = useState('lunar');
@@ -132,6 +134,7 @@ function Home (props) {
               listItems={listItems} 
               linkChange={changeURL} 
               section={[section0, section1, section2, section3, section4]}
+              jobPositionDom={jobPositionDom}
               isPanelClicked={isPanelClicked}/>
           </Suspense>
         </Canvas>
@@ -144,6 +147,7 @@ function Home (props) {
           </ul>
         <LoaderWrapper loading={props.isLoading}/>
         <DetectCaseStudy name={routeName} toggle={isOpen} />
+        <h2 ref={jobPositionDom} className='positionTitle'>Front End Developer /<br/> Senior Wordpress Developer</h2>
     </motion.div>
     );
 }
