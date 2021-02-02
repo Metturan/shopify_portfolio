@@ -316,7 +316,7 @@ function CanvasData (props) {
     if (mobile) {
       if (position >= -0.2 && scrolling) {
         if (position <= 4.2) {
-          speed += state.delta[0] * 0.0002
+          speed += state.delta[0] * 0.0007
         }
       }
     }

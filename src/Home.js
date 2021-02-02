@@ -127,7 +127,7 @@ function Home (props) {
     id='home-container'>
         <Grids />
         <ChapterSelection section={[section0, section1, section2, section3, section4]} />
-        <Canvas camera={{position: [0,0,4.5]}} >
+        <Canvas style={{touchAction: 'pan-y'}} camera={{position: [0,0,4.5]}} >
           <ambientLight intensity={0.2} />
           <Suspense fallback={null}>
             <CanvasData 

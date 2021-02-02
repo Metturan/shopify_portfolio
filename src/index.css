@@ -541,7 +541,7 @@ ul.carousel-list li span {
   transform: translate(50%, 50%);
 }
 .section-names .titleId.active.mobile {
-  transform: translate(0, -220%);
+  transform: translate(-50%, -200px);
 }
 
 .section-names h2 {
@@ -723,8 +723,11 @@ ul.carousel-list li span {
   .section-names h1 {
     font-size: 3.3rem;
     max-width: 100%;
+    width: 90%;
     line-height: 1.2;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     position: absolute;
   }
   .section-names {
