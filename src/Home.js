@@ -64,8 +64,6 @@ function Loader(props) {
   if (completePercent == 100 && active === false) {
     gsap.to(loadingOverlay.current, {duration: 0.3, autoAlpha: 0, delay: 1.1})
     gsap.to('.header', {duration: 0.3, autoAlpha: 1, delay: 1.1});
-
-    // props.setLoading(false);
   }
 
   return (

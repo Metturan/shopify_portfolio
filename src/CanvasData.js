@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, Component } from 'react';
 import { useFrame, extend } from 'react-three-fiber'
 import { useTexture, shaderMaterial } from 'drei'
-import { useGesture, useDrag, useMove } from 'react-use-gesture'
+import { useGesture, useDrag, useMove, useWheel } from 'react-use-gesture'
 import glsl from 'babel-plugin-glsl/macro'
 import * as THREE from 'three';
 import gsap from 'gsap';
@@ -38,14 +38,13 @@ function changeSlider() {
 
 changeSlider();
 
-window.addEventListener('wheel', (e) => {
+window.addEventListener('mousewheel', (e) => {
   if (position >= -0.2 && scrolling) {
     if (position <= 4.2) {
       speed += e.deltaY * 0.0002
     }
   }
 })
-
 
 const ColorMaterial = shaderMaterial(
   {
@@ -244,13 +243,9 @@ function HandleImages(props) {
       }
 
       previousRounded = rounded;
-
- 
   })
 
   function panelClicked(e) {
-
-    console.log('clicked')
 
     scrolling = false;
 
@@ -317,7 +312,8 @@ function CanvasData (props) {
   }
 
   // const config = {
-  //   axis: 'x',
+  //   axis: 'y',
+  //   config: true
   // }
 
   // const genericOptions = {
@@ -327,22 +323,14 @@ function CanvasData (props) {
   // }
 
   const bind = useMove( (state) => {
-    console.log(state)
     dragSlider(state)
   })
-
-  // const bind = useGesture(state => dragSlider(state), {
-  //   // global options such as `domTarget`
-  //   ...genericOptions,
-  //   // gesture specific options
-  //   drag: config,
-  // })
 
   function dragSlider(state) {
     if (mobile) {
       if (position >= -0.2 && scrolling) {
         if (position <= 4.2) {
-          speed += state.delta[0] * 0.0007
+          speed += state.delta[0] * 0.0009
         }
       }
     }
