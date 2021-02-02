@@ -541,7 +541,7 @@ ul.carousel-list li span {
   transform: translate(50%, 50%);
 }
 .section-names .titleId.active.mobile {
-  transform: translate(0, -200%);
+  transform: translate(0, -220%);
 }
 
 .section-names h2 {
