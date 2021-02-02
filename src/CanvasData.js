@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, Component } from 'react';
 import { useFrame, extend } from 'react-three-fiber'
 import { useTexture, shaderMaterial } from 'drei'
-import { useGesture, useDrag } from 'react-use-gesture'
+import { useGesture, useDrag, useMove } from 'react-use-gesture'
 import glsl from 'babel-plugin-glsl/macro'
 import * as THREE from 'three';
 import gsap from 'gsap';
@@ -250,6 +250,8 @@ function HandleImages(props) {
 
   function panelClicked(e) {
 
+    console.log('clicked')
+
     scrolling = false;
 
     props.link.linkChange(e.object.name, e.object.index);
@@ -314,15 +316,27 @@ function CanvasData (props) {
     mobile = true;
   }
 
-  const config = {
-    axis: 'x',
-    filterTaps: true,
-    useTouch: false
-  }
+  // const config = {
+  //   axis: 'x',
+  // }
 
-  const bind = useDrag( (state) => {
+  // const genericOptions = {
+  //   enabled: true,
+  //   axis: 'x',
+  //   filterTaps: true,
+  // }
+
+  const bind = useMove( (state) => {
+    console.log(state)
     dragSlider(state)
-  }, config)
+  })
+
+  // const bind = useGesture(state => dragSlider(state), {
+  //   // global options such as `domTarget`
+  //   ...genericOptions,
+  //   // gesture specific options
+  //   drag: config,
+  // })
 
   function dragSlider(state) {
     if (mobile) {
