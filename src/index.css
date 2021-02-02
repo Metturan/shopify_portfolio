@@ -534,7 +534,9 @@ ul.carousel-list li span {
   line-height: 1;
   margin-top:0;
   margin-bottom: 3vw;
-  transition: transform 0.3s linear;
+  transition: transform 0.5s ease-out;
+  -webkit-text-stroke-color: #fff;
+  -webkit-text-stroke-width: 1px;
 }
 
 .hidee {
