@@ -537,6 +537,10 @@ ul.carousel-list li span {
   transition: transform 0.3s linear;
 }
 
+.hidee {
+  display: none;
+}
+
 .section-names .titleId.active.desktop {
   transform: translate(50%, 50%);
 }
