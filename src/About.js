@@ -16,7 +16,7 @@ function About () {
       className="about" >
       <h1>Whenever, wherever. <br/>Let's work together.</h1>
       <div className='about-intro'>
-        <h2>Contact me for full-time jobs, freelance projects or to say hello</h2>
+        <h2>Contact me for any Shopify questions you have, want to work together or to say hello</h2>
         <h3>I have an inbox zero rule so I'll see your message for sure and, I'll reply with at least one smiley. I promise.</h3>
       </div>
       <a href="mailto:metturanketh@gmail.com" className='contactBtn'>
@@ -27,25 +27,26 @@ function About () {
       <p>From big brand websites, web apps for a startup, to a 300k/month visitors e-commerce site custom development. I have laid my mark and gained valuable experience and skills.</p>
       <p><strong>Primary Tech:</strong></p>
       <ul>
-        <li>Wordpress</li>
+        <li>Shopify</li>
         <li>PHP</li>
         <li>WooCommerce</li>
-        <li>Shopify</li>
+        <li>Wordpress</li>
         <li>React/Redux</li>
-        <li>Jquery</li>
         <li>Javascript</li>
         <li>Node</li>
         <li>MySQL</li>
         <li>CSS</li>
       </ul>
+      <br/>
       <p><strong>Other Skills:</strong></p>
       <ul>
         <li>Git</li>
+        <li>Klaviyo</li>
         <li>Google Analytics, Google Tag Manager</li>
         <li>Adobe Suite</li>
-        <li>JIRA</li>
+        <li>Facebook Pixel Analytics</li>
       </ul>
-      <p className='cta-callout'><strong>If you are looking for a Front End Developer or Wordpress/Shopify Developer to join your team for hiring or for contract/freelance work, give me a shout, and let's see if we can work together on building something great.</strong></p>
+      <p className='cta-callout'><strong>If you are looking for a Front End Developer or Shopify Developer to work with your team on any projects or for contract/freelance work, give me a shout, and let's see if we can work together on building something great.</strong></p>
       <div className="cta-button-holder">
         <a href="mailto:metturanketh@gmail.com" className='contactBtn'>
           <span>Contact Me</span><img src={mail} alt=""/>

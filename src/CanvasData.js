@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, Component } from 'react';
 import { useFrame, extend } from 'react-three-fiber'
 import { useTexture, shaderMaterial } from 'drei'
-import { useGesture, useDrag, useMove, useWheel } from 'react-use-gesture'
+import { useMove } from 'react-use-gesture'
 import glsl from 'babel-plugin-glsl/macro'
 import * as THREE from 'three';
 import gsap from 'gsap';

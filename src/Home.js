@@ -146,7 +146,7 @@ function Home (props) {
           </ul>
         <LoaderWrapper loading={props.isLoading}/>
         <DetectCaseStudy name={routeName} toggle={isOpen} />
-        <h2 ref={jobPositionDom} className='positionTitle'>Front End Developer /<br/> Senior Wordpress Developer</h2>
+        <h2 ref={jobPositionDom} className='positionTitle'>Front End Developer<br/> React/Shopify/Wordpress</h2>
     </motion.div>
     );
 }
