@@ -3,7 +3,8 @@ import {motion} from 'framer-motion';
 import Header from './Header'
 import Footer from './Footer'
 import ResponsivePlayer from './ResponsivePlayer'
-import Quiz from './Quiz'
+import QuizContainerContent from './QuizContainerContent'
+import Arrow from './Arrow'
 
 import klinkhoffLanding from './images/klinkhofflandingimage.png'
 
@@ -51,12 +52,13 @@ function Klinkhoff() {
           <ResponsivePlayer url={videosUrl.klink4} />
           <p>Follow Interests and Artists - To enhance their email marketing capacities and increase engagement we created custom functionlity that allows logged in users to save artists and interests to their profile. The result is information that can then be marketed to through specific email campaigns.</p>
         </div>
-        <div className="featured">
+        <div className="featured border-bottom">
           <ResponsivePlayer url={videosUrl.klink5} />
           <p>Follow Interests and Artists - To enhance their email marketing capacities and increase engagement we created custom functionlity that allows logged in users to save artists and interests to their profile. The result is information that can then be marketed to through specific email campaigns.</p>
         </div>
-        <h2 className='cta-title'>Let's talk about your project</h2>
-        <Quiz />
+        <Arrow />
+        {/* <h2 className='cta-title'>Let's talk about your project</h2> */}
+        <QuizContainerContent title="Let's talk about your project" />
       </section>
       <Footer />
     </div>

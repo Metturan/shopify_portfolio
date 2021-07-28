@@ -810,12 +810,34 @@ ul.carousel-list li span {
 .cta-title {
   margin-bottom: 20px;
   text-align: center;
+  width: 92%;
+  margin: 0 auto;
 }
 .react-player__play-icon {
   border-color: transparent transparent transparent black !important;
 }
+.border-bottom {
+  border-bottom: 1px solid #000;
+}
+.quiz-section > div:last-child p, .quiz-section > div:last-child h3 {
+  font-size: 14px;
+} 
+.quiz-section > div:last-child {
+  width: 43%;
+  padding-left: 45px;
+  box-sizing: border-box;
+  padding-top: 79px;
+}
+.quiz-section > div:first-child {
+  width: 50%;
+}
+.quiz-section {
+  display: flex;
+  margin: 0 auto;
+  width: 92%;
+}
 .quiz-container {
-  max-width: 700px;
+  /* max-width: 700px; */
   margin: 0 auto 20px auto;
   height: 739px;
 }
@@ -1155,6 +1177,12 @@ caption {
 @media (max-width: 800px) {
   h2 {
     font-size: 24px;
+  }
+  .quiz-section > div:last-child {
+    display: none;
+  }
+  .quiz-section > div:first-child {
+    width: 100%;
   }
   .featured {
     margin: 0 0 70px;
