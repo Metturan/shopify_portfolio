@@ -19,7 +19,7 @@ function Landing(props) {
       <CustomLink isLoading={props.isLoading} pageHistory={pageHistory} changeRoute={props.remount} to='/' />
       <ul className='menu-items'>
         <li><Link to='/about' className='about'>About</Link></li>
-        <li><Link to='/shopify-developer' className='about'>Shopify</Link></li>
+        {/* <li><Link to='/shopify-developer' className='about'>Shopify</Link></li> */}
       </ul>
     </div>
   )
