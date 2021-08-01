@@ -7,8 +7,9 @@ let pageHistory = [];
 function Landing(props) {
 
   useEffect(() => {
-    
+    console.log('page changed')
     pageHistory.push(window.location.pathname)
+
 
   }, [window.location.pathname])
 

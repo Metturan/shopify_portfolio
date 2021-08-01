@@ -2,7 +2,6 @@ import {useRef} from 'react'
 import { hotjar } from 'react-hotjar';
 import ResponsivePlayer from './ResponsivePlayer'
 import ArticleSnippet from './ArticleSnippet'
-import Header from './Header'
 import Footer from './Footer'
 import PricingSection from './Pricing'
 import Quiz from './Quiz'
@@ -37,7 +36,7 @@ function ShopifyDeveloperPage() {
     exit={{opacity: 0}}
     transition={transition}
     >
-      <Header />
+
       <div className='page-body'>
         <section className="shopify-hero">
           <div className='inner-hero'>
