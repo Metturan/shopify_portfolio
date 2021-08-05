@@ -1,4 +1,5 @@
 import {useRef} from 'react'
+import ReactPixel from 'react-facebook-pixel'
 import { hotjar } from 'react-hotjar';
 import ResponsivePlayer from './ResponsivePlayer'
 import ArticleSnippet from './ArticleSnippet'
@@ -13,6 +14,8 @@ import HeroImage from './images/shopifysites.png'
 
 
 hotjar.initialize(2525375, 6);
+ReactPixel.init('201368258608406');
+ReactPixel.pageView();
 
 const nanourl = 'https://vimeo.com/567703280'
 const klinkurl = 'https://vimeo.com/567703881'
@@ -21,6 +24,8 @@ const intro = 'https://vimeo.com/576850296'
 const transition = {duration: 1, ease: [0.43, 0.13, 0.23, 0.96]};
 
 function ShopifyDeveloperPage() {
+
+
 
   const ctaQuiz = useRef();
 

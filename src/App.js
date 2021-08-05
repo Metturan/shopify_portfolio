@@ -18,20 +18,10 @@ import Klinkhoff from './Klinkhoff'
 import Blog from './Blog'
 import Article from './article/Article'
 
-const advancedMatching = {  }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
-const options = {
-  autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
-  debug: true, // enable logs
-};
-
 function App() {
   let [key, setKey] = useState(0);
   let [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    console.log('asdf')
-    ReactPixel.init('201368258608406', advancedMatching, options);
-  }, [])
 
   function forceRemount() {
       setKey(key + 1)
